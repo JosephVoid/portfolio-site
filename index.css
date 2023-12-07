@@ -1,0 +1,50 @@
+@font-face {
+    font-family: Cascadia;
+    src: url('./font/Cascadia.ttf');
+}
+
+html {
+    --white: blanchedalmond;
+    --font: 14px;
+    background-color: black;
+    font-family: 'Cascadia';
+    color: var(--white);
+    text-align: start;
+    padding: 2em 0;
+}
+header {
+    font-weight: bolder;
+}
+.empty-line {
+    visibility: hidden;
+}
+p {
+    margin: 0;
+    font-size: var(--font);
+}
+.displayed-content {
+    margin-top: 2em;
+}
+p.cli::before {
+    content: "yoseph@portfolio:~$ ";
+}
+em {
+    color: rgb(63, 255, 63);
+}
+.menu-selectors p {
+    cursor: pointer;
+}
+#loader {
+    width: fit-content;
+}
+.menu-selected {
+    text-decoration: underline;
+}
+a {
+    text-decoration: underline;
+    color: var(--white);
+}
+.project-title {
+    text-decoration: underline;
+    font-weight: bolder;
+}
