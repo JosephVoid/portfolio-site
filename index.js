@@ -66,7 +66,8 @@ function show_screen (screen) {
 }
 
 function change_sh_name (name) {
-    _("sh-text").innerText = "./"+name+".sh"
+    _("sh-text").innerText = ""
+    type_it("sh-text", "./"+name+".sh", 50)
 }
 
 function load_projects () {
@@ -103,6 +104,7 @@ function load_experiance () {
     });
     experiance_section.innerHTML = experiance_section.innerHTML + hmtl_str;
 }
+
 function unload_except (except) {
     if (except == "projects") {
         _("experiance").innerHTML =  '<p> _______________________________________________________</p><p class="empty-line">*</p><p> Throughout my years...</p><p>_______________________________________________________</p>';
@@ -116,40 +118,129 @@ function unload_except (except) {
     }
 }
 
-// Click About Me Menu Item
-_("about-menu").addEventListener('click', (e) => {
+function type_it(id, txt, speed) {
+    let type_idx = 0;
+    setInterval(() => {
+        if (type_idx < txt.length) {
+            console.log(txt.charAt(type_idx));
+            document.getElementById(id).innerText += txt.charAt(type_idx);
+            type_idx++;
+        }
+        else
+            clearInterval()
+    }, speed);
+}
+
+function go_up_down (dir) {
+    let idx = 0;
+    for (const kid of _("menu-list").children) {
+        if (kid.classList.contains("menu-selected") && dir == "down"){
+            console.log(idx)
+            _("menu-list").children.item(idx+1)?.classList.add("menu-selected");
+            if (_("menu-list").children.item(idx+1))
+                _("menu-list").children.item(idx).classList.remove("menu-selected");
+            return _("menu-list").children.item(idx+1).id;
+        }
+        else if (kid.classList.contains("menu-selected") && dir == "up"){
+            //console.log(idx)
+            _("menu-list").children.item(idx-1)?.classList.add("menu-selected");
+            if (_("menu-list").children.item(idx-1))
+                _("menu-list").children.item(idx).classList.remove("menu-selected");
+            return _("menu-list").children.item(idx+1).id;
+        }
+        idx++;
+    }
+    
+}
+
+function go_to_screen (menu_id) {
+    switch (menu_id) {
+        case "about-menu":
+            go_to_about();
+            break;
+        case "project-menu":
+            go_to_project();
+            break;
+        case "project-menu":
+            go_to_project();
+            break;
+        default:
+            break;
+    }
+    
+}
+
+function go_to_about () {
     unselect_menu("project-menu");
     unselect_menu("exp-menu");
     select_menu("about-menu");
     remove_screen("projects");
     remove_screen("experiance");
-    show_screen("about");
+    setTimeout(() => show_screen("about"), 1200);
     unload_except();
+    window.scrollTo(0, 0);
     change_sh_name("about-me");
-})
+}
 
-// Click Projects Menu Item
-_("project-menu").addEventListener('click', (e) => {
-    unselect_menu("about-menu");
-    unselect_menu("exp-menu");
-    select_menu("project-menu");
-    remove_screen("about");
-    remove_screen("experiance");
-    show_screen("projects");
-    unload_except("projects");
-    load_projects();
-    change_sh_name("my-projects");
-})
-
-// Click Experiance Menu Item
-_("exp-menu").addEventListener('click', (e) => {
+function go_to_experiance () {
     unselect_menu("about-menu");
     unselect_menu("project-menu");
     select_menu("exp-menu");
     remove_screen("projects");
     remove_screen("about");
-    show_screen("experiance");
+    setTimeout(() => show_screen("experiance"), 1200);
     unload_except("experiance");
     load_experiance();
+    window.scrollTo(0, 0);
     change_sh_name("my-experiance");
+}
+
+function go_to_project () {
+    unselect_menu("about-menu");
+    unselect_menu("exp-menu");
+    select_menu("project-menu");
+    remove_screen("about");
+    remove_screen("experiance");
+    setTimeout(() => show_screen("projects"), 1200);
+    unload_except("projects");
+    load_projects();
+    window.scrollTo(0, 0);
+    change_sh_name("my-projects");
+}
+
+// Click About Me Menu Item
+_("about-menu").addEventListener('click', (e) => {
+    go_to_about();
+})
+
+// Click Projects Menu Item
+_("project-menu").addEventListener('click', (e) => {
+    go_to_project();
+})
+
+// Click Experiance Menu Item
+_("exp-menu").addEventListener('click', (e) => {
+    go_to_experiance();
+})
+
+var selected_menu_state = "";
+
+window.addEventListener("load", () => {
+    selected_menu_state = "about-menu";
+})
+
+var focused;
+window.addEventListener("keydown", (e) => {
+    if (e.key == "ArrowDown") {
+        e.preventDefault();
+        focused = go_up_down("down");
+    }
+    else if (e.key == "ArrowUp") {
+        e.preventDefault();
+        focused = go_up_down("up");
+    }
+    else if (e.key == "Enter") {
+        console.log(focused);
+        focused ? go_to_screen(focused) : null;
+    }
 })
