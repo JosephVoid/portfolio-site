@@ -122,7 +122,6 @@ function type_it(id, txt, speed) {
     let type_idx = 0;
     setInterval(() => {
         if (type_idx < txt.length) {
-            console.log(txt.charAt(type_idx));
             document.getElementById(id).innerText += txt.charAt(type_idx);
             type_idx++;
         }
@@ -135,18 +134,16 @@ function go_up_down (dir) {
     let idx = 0;
     for (const kid of _("menu-list").children) {
         if (kid.classList.contains("menu-selected") && dir == "down"){
-            console.log(idx)
             _("menu-list").children.item(idx+1)?.classList.add("menu-selected");
             if (_("menu-list").children.item(idx+1))
                 _("menu-list").children.item(idx).classList.remove("menu-selected");
             return _("menu-list").children.item(idx+1).id;
         }
         else if (kid.classList.contains("menu-selected") && dir == "up"){
-            //console.log(idx)
             _("menu-list").children.item(idx-1)?.classList.add("menu-selected");
             if (_("menu-list").children.item(idx-1))
                 _("menu-list").children.item(idx).classList.remove("menu-selected");
-            return _("menu-list").children.item(idx+1).id;
+            return _("menu-list").children.item(idx-1).id;
         }
         idx++;
     }
@@ -161,8 +158,8 @@ function go_to_screen (menu_id) {
         case "project-menu":
             go_to_project();
             break;
-        case "project-menu":
-            go_to_project();
+        case "exp-menu":
+            go_to_experiance();
             break;
         default:
             break;
@@ -234,10 +231,12 @@ window.addEventListener("keydown", (e) => {
     if (e.key == "ArrowDown") {
         e.preventDefault();
         focused = go_up_down("down");
+        console.log(focused);
     }
     else if (e.key == "ArrowUp") {
         e.preventDefault();
         focused = go_up_down("up");
+        console.log(focused);
     }
     else if (e.key == "Enter") {
         console.log(focused);
