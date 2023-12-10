@@ -51,6 +51,7 @@ a {
 pre {
     font-size: 10px;
     color: aqua;
+    margin-left: -4em;
 }
 @media screen and (max-width: 768px) {
     pre {
