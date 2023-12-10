@@ -1,15 +1,15 @@
 let projects = [
     {
-        name: "Sebsib Office",
+        name: "Sebsib Office & Forms",
         link: "https://www.sebsib.com",
         description: "A website for aggregation of collected field data. Made in mind to replace foreign data collection tools, like SurveyCTO, KoboToolBox. Features includes, Visualization, Exporting to Excel, User/Role management",
         skills: "React | NodeJS | ChartJS | Express | Mongo"
     },
     {
-        name: "Sebsib Collect",
-        link: "https://sebsib.com/app/Sebsib-Collect.apk",
-        description: "An app made for offline availabilty and response capturing. Can capture inputs like multiple choices, image, geolocation, files etc. An alternative to a popluar app called ODK Collect",
-        skills: "Flutter | REST API"
+        name: "Sebsib API",
+        link: "https://github.com/SebsibOfficial",
+        description: "A RESTfull API, with around 30 endpoints. It functions as part of the whole sebsib ecosystem and provides for Sebsib Office, Sebsib Forms and Sebsib Collect. Also includes Admin Panels",
+        skills: "NodeJS | REST API | MongoDB | Express"
     },
     {
         name: "Nearest Branch/ATM location bot",
@@ -23,13 +23,13 @@ let experiance = [
     {
         position: "Software & Integration Engineer, Dashen Bank S.C",
         duration: "Feb 2022 - Dec 2023",
-        description: "Worked at a locally prestigous coporate bank as an integration and software engineer for their mobile and web channel banking",
+        description: "Worked at a locally prestigious corporate bank as an integration and software engineer for thier mobile and web channel banking",
         skills: "Used:- IBM Cloud | Spring Boot | NodeJS | C++ | PowerShell"
     },
     {
         position: "Software Engineer, MassDel Delivery",
         duration: "Sept 2021 - Feb 2022",
-        description: "Worked at a delivery company as a developer for thier mobile app",
+        description: "Worked at a delivery company as a developer for their mobile app",
         skills: "Used:- AWS | PHP | React Native | Flutter"
     },
     {
