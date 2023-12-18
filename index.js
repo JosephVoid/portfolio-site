@@ -1,5 +1,11 @@
 let projects = [
     {
+        name: "JSON item selector NPM package",
+        link: "https://www.npmjs.com/package/json-item-selector",
+        description: "An npm package that simplifies the task of creating inter-dependant items based on a given JSON file, like location selection and game/chat dialog",
+        skills: "TypeScript | Github Actions CI/CD | NodeJS | Semantic Release"
+    },
+    {
         name: "Sebsib Office & Forms",
         link: "https://www.sebsib.com",
         description: "A website for aggregation of collected field data. Made in mind to replace foreign data collection tools, like SurveyCTO, KoboToolBox. Features includes, Visualization, Exporting to Excel, User/Role management",
