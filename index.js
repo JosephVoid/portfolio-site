@@ -2,7 +2,7 @@ let projects = [
     {
         name: "JSON item selector NPM package",
         link: "https://www.npmjs.com/package/json-item-selector",
-        description: "An npm package that simplifies the task of creating inter-dependant items based on a given JSON file, like location selection and game/chat dialog",
+        description: "An npm package that simplifies the redundant task of creating logic based on a given JSON file items. Mostly useful for location selection and game/chat dialog",
         skills: "TypeScript | Github Actions CI/CD | NodeJS | Semantic Release"
     },
     {
